@@ -44,7 +44,6 @@ body{
 }
 .table-tr{
   display: table-row;
-  flex-grow: 1;
 }
 .table-td{
   display: table-cell;
