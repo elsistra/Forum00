@@ -4,27 +4,28 @@
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <link rel="stylesheet" type="text/css" href="/public/normalize.css">
     <link rel="stylesheet" type="text/css" href="/public/styles.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
   </head>
   <body>
     <div id='header'>
       <div id='container'>
-        <div id='header-logo-div'><a href="/">Forum00</a></div>
+        <div id='header-logo-div'><a href="/"><b>00</b></a></div>
         <!--- If user is logged in--->
         <% if (session.username) { %>
           <div id='header-comms'>
-            <a href='/messages'><img src="/public/images/msg.gif" /></a>
+            <a href='/messages'><i class="fa  fa-envelope-o"></i></a>
           </div>
           <div id='header-comms'>
-            <a href='/forum'><img src="/public/images/forum.gif" /></a>
+            <a href='/forum'><i class="fa  fa-list-alt"></i></a>
           </div>
-          <div id='header-logo-div2'><a href='/profile'>Username</a> | <a href='/sign-out'>Sign Out</a></div>
+          <div id='header-logo-div2'><a href='/profile'><i class="fa  fa-user-o"></i></a> &nbsp;<a href='/sign-out'><i class="fa  fa-sign-out"></i></a></div>
         <% }else{ %>
           <div id='header-logo-div2'>
             <div id="login-div">
               <form method="POST" action="/log-in">
-                <input name="username" placeholder="username" type="text"/>
-                <input name="password" placeholder="password" type="password"/>
-                <input value="Login" type="submit"> or <a href='/register'>Register</a>
+                <input id='username-input' name="username" placeholder="username" type="text"/>
+                <input id='password-input' name="password" placeholder="password" type="password"/>
+                <input value="Login" type="submit"> <a href='/register'>Register</a>
               </form>
             </div>
           </div>
