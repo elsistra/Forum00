@@ -1,0 +1,78 @@
+#maincontent{
+  min-height: 400px;
+  flex-grow: 1;
+  background-color: grey;
+  padding-left: 5px;
+  padding-top: 5px;
+}
+#container{
+  display: flex;
+}
+#header{
+  background-color: #000;
+  color: #ffffff;
+  padding-left: 5px;
+  vertical-align: top;
+}
+#header-logo-div{
+  font-size: 16pt;
+  flex-grow: 0;
+  flex-shrink: 0;
+  padding-right: 20px;
+}
+#header-logo-div2{
+  flex-grow: 1;
+  text-align: right;
+  padding-top: 5px;
+  padding-right: 5px;
+}
+.table-tr{
+  display: table-row;
+  flex-grow: 1;
+}
+.table-td{
+  display: table-cell;
+  padding-right:10px;
+}
+.subject{
+  width: 50%;
+}
+.postcount{
+  width: 25%;
+
+}
+.lastreply{
+  width: 25%;
+  text-align: right;
+}
+h2, a{
+  color: #ffffff;
+  text-decoration: none;
+}
+a{
+  display: inline-block;
+}
+.menu-item{
+  min-height: 30px;
+  color: #ffffff;
+  padding-left: 5px;
+  padding-top: 5px;
+  padding-right: 5px;
+}
+.menu-item:hover{
+  background-color: rgb(39, 100, 192);
+}
+#header-comms{
+  padding-left: 5px;
+  padding-top: 5px;
+  padding-right: 5px;
+  flex-grow: 0;
+  flex-shrink: 0;
+}
+#header-leaderboards{
+  padding-left: 20px;
+  padding-top: 5px;
+  padding-right: 5px;
+  flex-grow: 0;
+  flex-shrink: 0;
+}
