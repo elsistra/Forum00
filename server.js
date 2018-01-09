@@ -49,15 +49,23 @@ mongodb.connect(url, function(err, client) {
   require('./routes/log-in')(app);
   require('./routes/messages')(app);
   require('./routes/forum')(app);
+  require('./routes/newthread')(app);
 
   // REAL TIME SERVER EMITS AND LISTENERS HERE -------------------------------------------------------------
   realtimeServer.on('connect', function (socket) {
     // A client has connected to the realtime server.
+
     socket.on('want-users-list', async function () {
-      // This client is asking for users list data. Ok.
+      // This client is asking for users list data
       const usersList = await users.find().toArray();
       socket.emit('users-list', usersList);
     });
+    socket.on('want-threads-list', async function () {
+      // This client is asking for threads list data
+      const threadsList = await threads.find().toArray();
+      socket.emit('threads-list', threadsList);
+    });
+
   });
 
   //Start the server
