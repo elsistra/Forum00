@@ -68,15 +68,22 @@ body{
   display: table;
   width: 100%;
 }
+.table-thead {
+  display: table-header-group;
+  background-color: #003399;
+}
+.table-tbody {
+  display: table-row-group;
+}
+.table-tfoot {
+  display: table-footer-group;
+}
 .table-tr{
   display: table-row;
 }
 .table-td{
   display: table-cell;
   text-align: center;
-}
-.table-header{
-  background-color: #003399;
 }
 .subject{
   width: 50%;

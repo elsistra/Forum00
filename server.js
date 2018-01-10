@@ -24,7 +24,8 @@ mongodb.connect(url, function(err, client) {
   //Sets the database to global app variable?
   app.set('db', db);
   // Specify the collection inside the database we will be working with
-  const users = db.collection("users");
+  const usersCollection = db.collection("users");
+  const threadsCollection = db.collection("threads");
   // Settup sessions
   app.use(session({
     secret: 'keyboard cat',
@@ -54,18 +55,21 @@ mongodb.connect(url, function(err, client) {
   // REAL TIME SERVER EMITS AND LISTENERS HERE -------------------------------------------------------------
   realtimeServer.on('connect', function (socket) {
     // A client has connected to the realtime server.
+    console.log('[[debug]] '+socket.id, 'rt:connect');
 
     socket.on('want-users-list', async function () {
       // This client is asking for users list data
-      const usersList = await users.find().toArray();
+      console.log('[[debug]] '+socket.id, 'rt:want-users-list');
+      const usersList = await usersCollection.find().toArray();
       socket.emit('users-list', usersList);
     });
+
     socket.on('want-threads-list', async function () {
       // This client is asking for threads list data
-      const threadsList = await threads.find().toArray();
+      console.log('[[debug]] '+socket.id, 'rt:want-threads-list');
+      const threadsList = await threadsCollection.find().toArray();
       socket.emit('threads-list', threadsList);
     });
-
   });
 
   //Start the server
