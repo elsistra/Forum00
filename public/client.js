@@ -138,6 +138,11 @@ function redrawThreadsTableTbody (elId, localData) {
 
 // Create _redrawData function, please do not directly call this.
 function _redrawData () {
+  if (prevData === data) {
+    // Skip redraw if data was not updated.
+    return;
+  }
+
   if (prevData.someProperty1 !== data.someProperty1) {
     // Update elements based on someProperty1 data.
   }
