@@ -10,8 +10,8 @@ let data = {
   threads: []
 };
 
-// Create a UsersList component.
-const UsersList = {
+// Create a UsersListItems component.
+const UsersListItems = {
   // mithril will use components' `view()` method to generate HTML.
   view: function () {
     // Create array of virtual elements from array of users.
@@ -26,8 +26,8 @@ const UsersList = {
   }
 }
 
-// Create a ThreadsTableTbody component.
-const ThreadsTableTbody = {
+// Create a ThreadsTableRows component.
+const ThreadsTableRows = {
   // mithril will use components' `view()` method to generate HTML.
   view: function () {
     // Create array of virtual elements from array of threads.
@@ -46,7 +46,9 @@ const ThreadsTableTbody = {
 
 // Usage:
 
-m.mount(document.querySelector('#threadsTableTbody'), ThreadsTableTbody);
+// Find an element and mount component onto it. Component's view method will be
+// invoked to efficiently populate mounted component every redraw.
+m.mount(document.querySelector('#threadsTableTbody'), ThreadsTableRows);
 
 // Listen for threads array response from server
 socket.on('threads-list', function (threadsArray) {
@@ -60,7 +62,7 @@ socket.on('threads-list', function (threadsArray) {
   // Update the threads data.
   data.threads = threadsArray;
 
-  // Redraw data.
+  // Redraw components.
   m.redraw();
 });
 
@@ -70,14 +72,16 @@ socket.emit('want-threads-list');
 // For admin view only. Hacky but works: Check for admin view by attempting to
 // find an element IDed "admin-view". If it exists, then user is in admin view.
 if (document.querySelector('#admin-view')) {
-  m.mount(document.querySelector('#usersList'), UsersList);
+  // Find an element and mount component onto it. Component's view method will be
+  // invoked to efficiently populate mounted component every redraw.
+  m.mount(document.querySelector('#usersList'), UsersListItems);
 
   // Listen for users array replacement from server
   socket.on('users-list', function (usersArray) {
     // Update the users data.
     data.users = usersArray;
 
-    // Redraw data.
+    // Redraw components.
     m.redraw();
   });
 
