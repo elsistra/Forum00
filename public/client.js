@@ -1,9 +1,9 @@
 const state = {
   threads: {
     columns: [
-      { key: 'subject', heading: 'Subject', class: 'subject', default: '' },
-      { key: 'posts', heading: 'Posts', class: 'postscount', default: 0 },
-      { key: 'lastReply', heading: 'Last Reply', class: 'lastreply', default: 'n/a' }
+      { key: 'subject', text: 'Subject', class: 'subject', default: '' },
+      { key: 'posts', text: 'Posts', class: 'postscount', default: 0 },
+      { key: 'lastReply', text: 'Last Reply', class: 'lastreply', default: 'n/a' }
     ],
     rows: []
   }
@@ -16,7 +16,7 @@ function mountCssTable(selector, substate) {
           m('div', { class: 'table-tr' }, [
             substate.columns.map(function (column) {
               const classes = 'table-td ' + (column.class || '');
-              return m('div', { class: classes }, column.heading);
+              return m('div', { class: classes }, column.text);
             })
           ])
         ]),
