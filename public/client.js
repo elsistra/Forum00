@@ -38,7 +38,7 @@ function mountCssTable(selector, substate) {
     }
   });
 }
-mountCssTable('#threadsTableTbody', state.threads);
+mountCssTable('#threads-list', state.threads);
 m.redraw();
 
 const socket = io();
