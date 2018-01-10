@@ -6,6 +6,7 @@ html{
 }
 body{
   height: 100%;
+  line-height: 1.5rem;
   background-color: black;
   color: grey;
 
@@ -57,7 +58,6 @@ body{
 #header-logo-div2{
   flex-grow: 1;
   text-align: right;
-  padding-top: 5px;
   padding-right: 5px;
 }
 #footer {
@@ -114,7 +114,6 @@ a{
 }
 #header-comms{
   padding-left: 5px;
-  padding-top: 5px;
   padding-right: 5px;
   flex-grow: 0;
   flex-shrink: 0;
