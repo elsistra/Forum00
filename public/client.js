@@ -9,7 +9,11 @@ const state = {
   }
 };
 function mountCssTable(selector, substate) {
-  m.mount(document.querySelector(selector), {
+  const element = document.querySelector(selector);
+  if (!element) {
+    return;
+  }
+  m.mount(element, {
     view: function () {
       return [
         m('div', { class: 'table-thead' }, [

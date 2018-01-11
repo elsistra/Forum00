@@ -15,15 +15,6 @@ body{
   /*Use flexbox container column*/
   flex-direction: column;
 }
-#maincontent{
-  /*Enable flexbox item growing*/
-  flex-grow: 1;
-
-  background-color: black;
-  color: white;
-  padding-left: 5px;
-  padding-top: 5px;
-}
 #thread-list-container{
   /*Enable flexbox item growing*/
   flex-grow: 1;
@@ -32,15 +23,18 @@ body{
   display: flex;
   /*Use flexbox container column*/
   flex-direction: column;
-}
-#container{
-  /*Use flexbox container display*/
-  display: flex;
+
+  background-color: black;
+  color: white;
+  margin-top: 5px;
 }
 #header{
   /*Disable flexbox item shrinking*/
   flex-shrink: 0;
-  padding-bottom: 5px;
+
+  /*Use flexbox container display*/
+  display: flex;
+
   background-color: #000;
   color: #ffffff;
   padding-left: 5px;
@@ -49,13 +43,13 @@ body{
 #username-input, #password-input{
   width: 100px;
 }
-#header-logo-div{
+.header-logo-div{
   font-size: 16pt;
   flex-grow: 0;
   flex-shrink: 0;
   padding-right: 20px;
 }
-#header-logo-div2{
+.header-logo-div2{
   flex-grow: 1;
   text-align: right;
   padding-right: 5px;
@@ -112,7 +106,7 @@ a{
 .menu-item:hover{
   background-color: rgb(39, 100, 192);
 }
-#header-comms{
+.header-comms{
   padding-left: 5px;
   padding-right: 5px;
   flex-grow: 0;
