@@ -9,7 +9,11 @@ const state = {
   }
 };
 function mountCssTable(selector, substate) {
-  m.mount(document.querySelector(selector), {
+  const element = document.querySelector(selector);
+  if (!element) {
+    return;
+  }
+  m.mount(element, {
     view: function () {
       return [
         m('div', { class: 'table-thead' }, [
@@ -38,7 +42,7 @@ function mountCssTable(selector, substate) {
     }
   });
 }
-mountCssTable('#threadsTableTbody', state.threads);
+mountCssTable('#threads-list', state.threads);
 m.redraw();
 
 const socket = io();

@@ -7,28 +7,30 @@
     <script defer src="https://use.fontawesome.com/releases/v5.0.3/js/all.js"></script>
   </head>
   <body>
-    <div id='header'>
-      <div id='container'>
-        <div id='header-logo-div'><a href="/"><b>00</b></a></div>
-        <!--- If user is logged in--->
-        <% if (session.username) { %>
-          <div id='header-comms'>
-            <a href='/messages'><i class="far fa-envelope"></i></a>
-          </div>
-          <div id='header-comms'>
-            <a href='/forum'><i class="far fa-list-alt"></i></a>
-          </div>
-          <div id='header-logo-div2'><a href='/profile'><i class="far fa-user"></i></a> &nbsp;<a href='/sign-out'><i class="fas fa-sign-out-alt"></i></a></div>
-        <% }else{ %>
-          <div id='header-logo-div2'>
-            <div id="login-div">
-              <form method="POST" action="/log-in">
-                <input id='username-input' name="username" placeholder="username" type="text"/>
-                <input id='password-input' name="password" placeholder="password" type="password"/>
-                <input value="Login" type="submit"> <a href='/register'>Register</a>
-              </form>
-            </div>
-          </div>
-        <% } %>
+    <header id='header'>
+      <div class='header-logo-div'>
+        <a href="/"><b>00</b></a>
       </div>
-    </div>
+      <!--- If user is logged in--->
+      <% if (session.username) { %>
+        <div class='header-comms'>
+          <a href='/messages'><i class="far fa-envelope"></i></a>
+        </div>
+        <div class='header-comms'>
+          <a href='/forum'><i class="far fa-list-alt"></i></a>
+        </div>
+        <div class='header-logo-div2'>
+          <a href='/profile'><i class="far fa-user"></i></a> &nbsp;<a href='/sign-out'><i class="fas fa-sign-out-alt"></i></a>
+        </div>
+      <% }else{ %>
+        <div class='header-logo-div2'>
+          <div id="login-div">
+            <form method="POST" action="/log-in">
+              <input id='username-input' name="username" placeholder="username" type="text"/>
+              <input id='password-input' name="password" placeholder="password" type="password"/>
+              <input value="Login" type="submit"> <a href='/register'>Register</a>
+            </form>
+          </div>
+        </div>
+      <% } %>
+    </header>
