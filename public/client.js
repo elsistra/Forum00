@@ -1,84 +1,25 @@
 const state = {
   threads: []
 };
-function mountCssTable(selector, header, body, footer) {
-  const element = document.querySelector(selector);
-
-  const componentView = function () {
-    const tableHeaderType = 'div';
-    const tableHeaderAttributes = { class: 'table-thead' };
-    const tableHeaderChildren = header();
-    const tableHeader = m(tableHeaderType, tableHeaderAttributes, tableHeaderChildren);
-
-    const tableBodyType = 'div';
-    const tableBodyAttributes = { class: 'table-tbody' };
-    const tableBodyChildren = body();
-    const tableBody = m(tableBodyType, tableBodyAttributes, tableBodyChildren);
-
-    const tableFooterType = 'div';
-    const tableFooterAttributes = { class: 'table-tfoot' };
-    const tableFooterChildren = footer();
-    const tableFooter = m(tableFooterType, tableFooterAttributes, tableFooterChildren);
-
-    return [tableHeader, tableBody, tableFooter];
+const ThreadList = {
+  view: function () {
+    return m('div.table', [
+        m('div.table-thead', [
+          m('div.table-th.subject', 'Subject'),
+          m('div.table-th.postscount', 'Posts'),
+          m('div.table-th.lastreply', 'Last Reply')
+        ]),
+        m('div.table-tbody', state.threads.map((thread) => {
+          return m('div.table-tr', [
+            m('div.table-td.subject', thread.subject),
+            m('div.table-td.postscount', thread.posts),
+            m('div.table-td.lastreply', thread.lastReply)
+          ])
+        }))
+    ])
   }
-
-  const Component = {
-    view: componentView
-  };
-
-  m.mount(element, Component);
 }
-
-const tableSelector = '#threads-list';
-const tableHeader = function () {
-  const subjectType = 'div';
-  const subjectAttributes = { class: 'table-th subject' };
-  const subjectChildren = 'Subject';
-  const subjectHeader = m(subjectType, subjectAttributes, subjectChildren);
-
-  const postsType = 'div';
-  const postsAttributes = { class: 'table-th postscount' };
-  const postsChildren = 'Posts';
-  const postsHeader = m(postsType, postsAttributes, postsChildren);
-
-  const lastReplyType = 'div';
-  const lastReplyAttributes = { class: 'table-th lastreply' };
-  const lastReplyChildren = 'Last Reply';
-  const lastReplyHeader = m(lastReplyType, lastReplyAttributes, lastReplyChildren);
-
-  const rowType = 'div';
-  const rowAttributes = { class: 'table-tr' };
-  const rowChildren = [subjectHeader, postsHeader, lastReplyHeader];
-
-  return m(rowType, rowAttributes, rowChildren);
-};
-const tableBody = function () {
-  return state.threads.map((thread) => {
-    const subjectType = 'div';
-    const subjectAttributes = { class: 'table-td subject' };
-    const subjectChildren = thread.subject;
-    const subjectCell = m(subjectType, subjectAttributes, subjectChildren);
-
-    const postsType = 'div';
-    const postsAttributes = { class: 'table-td postscount' };
-    const postsChildren = thread.posts;
-    const postsCell = m(postsType, postsAttributes, postsChildren);
-
-    const lastReplyType = 'div';
-    const lastReplyAttributes = { class: 'table-td lastreply' };
-    const lastReplyChildren = thread.lastReply;
-    const lastReplyCell = m(lastReplyType, lastReplyAttributes, lastReplyChildren);
-
-    const rowType = 'div';
-    const rowAttributes = { class: 'table-tr' };
-    const rowChildren = [subjectCell, postsCell, lastReplyCell];
-
-    return m(rowType, rowAttributes, rowChildren);
-  });
-};
-const tableFooter = function () {};
-mountCssTable(tableSelector, tableHeader, tableBody, tableFooter);
+m.mount(document.querySelector('#thread-list-container'), ThreadList);
 
 const socket = io();
 socket.on('threads-list', function (threads) {
