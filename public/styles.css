@@ -75,6 +75,10 @@ body{
 .table-tr{
   display: table-row;
 }
+.table-th{
+  display: table-cell;
+  text-align: center;
+}
 .table-td{
   display: table-cell;
   text-align: center;
